@@ -4,8 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import todoRoutes from './route/todos.js';
 
-const mongodb = `mongodb+srv://thanveer:aishu123@cluster0.yluhn.mongodb.net/
-Todo-database?retryWrites=true&w=majority`;
+
 
 const app = express();
 dotenv.config();
@@ -21,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 const PORT = process.env.PORT || 3001;
-mongoose.connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(process.env.mongodb, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log(`server is running on port ${PORT}`);
     app.listen(PORT);
 }).catch(err => {
